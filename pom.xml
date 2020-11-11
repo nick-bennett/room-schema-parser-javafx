@@ -51,7 +51,9 @@
 
 
   <build>
+
     <finalName>${project.artifactId}</finalName>
+
     <plugins>
 
       <plugin>
@@ -64,6 +66,7 @@
           <target>${maven.compiler.release}</target>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
@@ -72,31 +75,31 @@
           <mainClass>room.schema.parser.javafx/edu.cnm.deepdive.MainJfx</mainClass>
         </configuration>
       </plugin>
+
       <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-      <configuration>
-        <archive>
-          <manifest>
-            <!-- Main class -->
-            <mainClass>${main.class}</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <!--  Includes project's dependencies -->
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
-        <appendAssemblyId>false</appendAssemblyId>
-      </configuration>
-      <executions>
-        <execution>
-          <id>make-assembly</id>
-          <phase>package</phase>
-          <goals>
-            <goal>single</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${main.class}</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <appendAssemblyId>false</appendAssemblyId>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
 
   </build>

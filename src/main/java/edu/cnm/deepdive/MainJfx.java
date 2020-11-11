@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 public class MainJfx extends Application {
 
-  private static final String RESOURCE_BUNDLE = "strings";
+  private static final String RESOURCE_BUNDLE =
+      MainJfx.class.getPackageName().replace('.', '/') + "/strings";
   private static final String LAYOUT_RESOURCE = "main.fxml";
   private static final String WINDOW_TITLE_KEY = "window_title";
 
@@ -20,8 +21,7 @@ public class MainJfx extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     ResourceBundle bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE);
-    FXMLLoader fxmlLoader =
-        new FXMLLoader(MainJfx.class.getClassLoader().getResource(LAYOUT_RESOURCE), bundle);
+    FXMLLoader fxmlLoader = new FXMLLoader(MainJfx.class.getResource(LAYOUT_RESOURCE), bundle);
     Parent root = fxmlLoader.load();
     Scene scene = new Scene(root);
     stage.setTitle(bundle.getString(WINDOW_TITLE_KEY));
